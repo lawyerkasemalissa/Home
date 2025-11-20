@@ -2,22 +2,47 @@ name: Save Message
 
 on:
   repository_dispatch:
-    types: [new_message]
+    types: [new-message]
 
 jobs:
-  save-message:
+  save:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{secrets.MY_SECRET_TOKEN}}  # ← التوكن محفوظ في GitHub Secrets
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Save message
+      - name: Prepare message
         run: |
           mkdir -p data
-          if [ ! -f data/messages.json ]; then
-            echo "[]" > data/messages.json
-          fi
-          node .github/scripts/saveMessage.js "$GITHUB_EVENT_CLIENT_PAYLOAD"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          touch data/messages.json
+          echo "🔄 الرسالة المستلمة:"
+          echo '${{ github.event.client_payload.message }}'
+
+          node <<EOF
+          const fs = require('fs');
+          const path = 'data/messages.json';
+          const newMessage = {
+            name: '${{ github.event.client_payload.name }}',
+            email: '${{ github.event.client_payload.email }}',
+            message: '${{ github.event.client_payload.message }}',
+            date: new Date().toISOString()
+          };
+
+          let messages = [];
+          if (fs.existsSync(path)) {
+            messages = JSON.parse(fs.readFileSync(path, 'utf8'));
+          }
+          messages.push(newMessage);
+          fs.writeFileSync(path, JSON.stringify(messages, null, 2));
+          EOF
+
+      - name: Commit and push
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add data/messages.json
+          git commit -m "📩 رسالة جديدة من ${{ github.event.client_payload.name }}"
+          git push https://x-access-token:${GH_TOKEN}@github.com/lawyerkasemalissa/Home.git

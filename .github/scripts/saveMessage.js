@@ -1,30 +1,20 @@
 const fs = require('fs');
-const path = require('path');
 
-const messageJson = process.env.MESSAGE_JSON;
-if (!messageJson) {
-  console.log("No message data found.");
+const payload = process.argv[2];
+if (!payload) {
+  console.error("No payload found.");
   process.exit(1);
 }
 
-const messagesDir = "data";
-const messagesFile = path.join(messagesDir, "messages.json");
-
-// إنشاء المجلد إذا لم يكن موجود
-if (!fs.existsSync(messagesDir)) {
-  fs.mkdirSync(messagesDir, { recursive: true });
-}
-
-// قراءة الملف إذا كان موجودًا
+const dataPath = "data/messages.json";
 let messages = [];
-if (fs.existsSync(messagesFile)) {
-  messages = JSON.parse(fs.readFileSync(messagesFile, "utf-8"));
+if (fs.existsSync(dataPath)) {
+  messages = JSON.parse(fs.readFileSync(dataPath, "utf-8"));
 }
 
-// إضافة الرسالة الجديدة
-const newMessage = JSON.parse(messageJson);
-messages.push(newMessage);
+const event = JSON.parse(payload);
+const newMessage = JSON.parse(event.client_payload.message_json);
 
-// حفظ الملف بصيغة JSON
-fs.writeFileSync(messagesFile, JSON.stringify(messages, null, 2));
-console.log("✅ Message saved!");
+messages.push(newMessage);
+fs.writeFileSync(dataPath, JSON.stringify(messages, null, 2));
+console.log("Message saved!");

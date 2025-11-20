@@ -293,12 +293,12 @@ window.addEventListener("scroll", ()=>{
   });
 });
 /* إرسال الرسائل وحفظها في GitHub */
-document.getElementById("send").addEventListener("click", async ()=>{
+document.getElementById("send").addEventListener("click", async () => {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const message = document.getElementById("message").value;
 
-  if(!name || !email || !message){
+  if (!name || !email || !message) {
     alert("الرجاء ملء جميع الحقول!");
     return;
   }
@@ -307,33 +307,31 @@ document.getElementById("send").addEventListener("click", async ()=>{
     name, email, message, date: new Date().toISOString()
   };
 
-  try{
-  fetch("https://api.github.com/repos/OWNER/REPO/dispatches", {
-  method: "POST",
-  headers: {
-    "Accept": "application/vnd.github+json",
-    "Authorization": "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",
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    event_type: "new_message",
-    client_payload: {
-      message_json: JSON.stringify({
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        message: document.getElementById("message").value,
-        date: new Date().toISOString()
+  // إرسال POST إلى GitHub Actions
+  try {
+    await fetch("https://api.github.com/repos/OWNER/REPO/dispatches", {
+      method: "POST",
+      headers: {
+        "Accept": "application/vnd.github+json",
+        // لا تضع PAT هنا!
+        "Authorization": "Bearer TOKEN_ON_SERVER",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        event_type: "new_message",
+        client_payload: {
+          message_json: JSON.stringify(payload)
+        }
       })
-    }
-  })
-});
+    });
 
     alert("✅ تم إرسال الرسالة بنجاح!");
-  }catch(err){
+  } catch (err) {
     console.error(err);
     alert("❌ فشل إرسال الرسالة.");
   }
 });
+
 
 </script>
 </body>

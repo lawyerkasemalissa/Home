@@ -24,4 +24,8 @@ jobs:
           node .github/scripts/saveMessage.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+<<<<<<< HEAD
           MESSAGE_JSON: ${{ github.event.client_payload.message_json }}
+=======
+          MESSAGE_JSON: ${{ github.event.client_payload.message_json }}
+>>>>>>> c72025463ef3c03dcb6a5ec22ada0366bbfde0f2

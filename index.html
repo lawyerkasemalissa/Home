@@ -292,11 +292,77 @@ window.addEventListener("scroll", ()=>{
     }
   });
 });
+/* إرسال الرسائل وحفظها في GitHub */
+async function sendMessage() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-// تنبيه عند الإرسال (تجريبي)
-document.getElementById("send").addEventListener("click", ()=>{
-  alert("✅ تم إرسال الرسالة بنجاح! (هذا نموذج تجريبي)");
-});
+    if (!name || !email || !message) {
+        alert("⚠️ الرجاء ملء جميع الحقول.");
+        return;
+    }
+
+    const newMessage = {
+        id: Date.now(),
+        name,
+        email,
+        message,
+        date: new Date().toISOString()
+    };
+
+    const token = "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";
+    const apiUrl = "https://api.github.com/repos/lawyerkasemalissa/Home/contents/data/messages.json";
+
+    try {
+        const getRes = await fetch(apiUrl, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+
+        const fileData = await getRes.json();
+        const sha = fileData.sha;
+
+        let oldMessages = [];
+        if (fileData.content) {
+            const decoded = atob(fileData.content.replace(/\n/g, ""));
+            oldMessages = JSON.parse(decoded);
+        }
+
+        oldMessages.push(newMessage);
+        const updatedContent = btoa(JSON.stringify(oldMessages, null, 2));
+
+        const payload = {
+            message: "New contact message submitted",
+            content: updatedContent,
+            sha
+        };
+
+        const saveRes = await fetch(apiUrl, {
+            method: "PUT",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (saveRes.ok) {
+            alert("✅ تم إرسال الرسالة بنجاح!");
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("message").value = "";
+        } else {
+            alert("❌ فشل إرسال الرسالة.");
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("❌ حدث خطأ أثناء الإرسال.");
+    }
+}
+
+document.getElementById("send").addEventListener("click", sendMessage);
+
 </script>
 </body>
 </html>

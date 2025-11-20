@@ -281,7 +281,7 @@ function loadServices(lang) {
           const card = document.createElement("div");
           card.className = "card";
           card.innerHTML = `
-            <p>${item.icon} ${item.title[lang]}</p>
+            <bold><p>${item.icon} ${item.title[lang]}</p></bold>
             <p>${item.desc[lang]}</p>
           `;
           container.appendChild(card);

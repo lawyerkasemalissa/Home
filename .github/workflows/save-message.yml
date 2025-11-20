@@ -1,9 +1,9 @@
 name: Save Message
 
 on:
-  workflow_dispatch:  # يمكن تفعيله يدويًا أولاً
+  workflow_dispatch: {}   # لتجربة يدوية
   repository_dispatch:
-    types: [new_message]
+    types: [new_message] # لتفعيل من الموقع
 
 jobs:
   save-message:
@@ -18,14 +18,21 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Install dependencies (if needed)
+        run: npm install
+        working-directory: .
+
       - name: Save message
+        run: node .github/scripts/saveMessage.js
+        env:
+          MESSAGE_JSON: ${{ github.event.client_payload.message_json }}
+
+      - name: Commit messages.json
         run: |
-          echo "Saving message..."
-          node .github/scripts/saveMessage.js
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/messages.json
+          git commit -m "Add new message from website" || echo "No changes to commit"
+          git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-<<<<<<< HEAD
-          MESSAGE_JSON: ${{ github.event.client_payload.message_json }}
-=======
-          MESSAGE_JSON: ${{ github.event.client_payload.message_json }}
->>>>>>> c72025463ef3c03dcb6a5ec22ada0366bbfde0f2

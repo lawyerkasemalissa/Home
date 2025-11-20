@@ -1,0 +1,50 @@
+[
+  {
+    "id": "svc-001",
+    "icon": "⚖️",
+    "active": true,
+    "order": 1,
+    "title": {
+      "ar": "الاستشارات القانونية",
+      "en": "Legal Consultation",
+      "nl": "Juridisch Advies"
+    },
+    "desc": {
+      "ar": "تقديم استشارات قانونية دقيقة للشركات والأفراد",
+      "en": "Providing precise legal consultation for companies and individuals",
+      "nl": "Nauwkeurig juridisch advies voor bedrijven en particulieren"
+    }
+  },
+  {
+    "id": "svc-002",
+    "icon": "📜",
+    "active": true,
+    "order": 2,
+    "title": {
+      "ar": "صياغة ومراجعة العقود",
+      "en": "Contract Drafting & Review",
+      "nl": "Opstellen en controleren van contracten"
+    },
+    "desc": {
+      "ar": "صياغة العقود التجارية ومراجعتها لضمان الحقوق والالتزامات",
+      "en": "Drafting and reviewing commercial contracts to ensure rights and obligations",
+      "nl": "Opstellen en beoordelen van commerciële contracten om rechten en plichten te waarborgen"
+    }
+  },
+  {
+    "id": "svc-003",
+    "icon": "🏛️",
+    "active": true,
+    "order": 3,
+    "title": {
+      "ar": "المرافعات أمام الجهات القضائية",
+      "en": "Litigation & Representation",
+      "nl": "Procesvoering en vertegenwoordiging"
+    },
+    "desc": {
+      "ar": "تمثيل العملاء أمام المحاكم والجهات القضائية بكفاءة عالية",
+      "en": "Representing clients before courts and legal authorities with high efficiency",
+      "nl": "Cliënten efficiënt vertegenwoordigen voor rechtbanken en juridische instanties"
+    }
+  }
+]

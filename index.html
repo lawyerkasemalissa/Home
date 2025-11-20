@@ -292,7 +292,7 @@ window.addEventListener("scroll", ()=>{
     }
   });
 });
-/* إرسال الرسائل وحفظها في GitHub */
+/* إرسال الرسائل */
 document.getElementById("send").addEventListener("click", async () => {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
@@ -307,31 +307,7 @@ document.getElementById("send").addEventListener("click", async () => {
     name, email, message, date: new Date().toISOString()
   };
 
-  try {
-    const response = await fetch("https://api.github.com/repos/lawyerkasemalissa/Home/dispatches", {
-      method: "POST",
-      headers: {
-        "Accept": "application/vnd.github.everest-preview+json",
-        "Authorization": `Bearer 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`
-      },
-      body: JSON.stringify({
-        event_type: "save-message",
-        client_payload: payload
-      })
-    });
-
-    if (response.ok) {
       alert("تم إرسال رسالتك بنجاح!");
-      document.getElementById("name").value = "a";
-      document.getElementById("email").value = "s";
-      document.getElementById("message").value = "d";
-    } else {
-      alert("فشل في إرسال الرسالة. حاول مرة أخرى لاحقًا.");
-    }
-  } catch (error) {
-    console.error("خطأ في الإرسال:", error);
-    alert("حدث خطأ أثناء إرسال الرسالة.");
-  }
 });
 
 </script>

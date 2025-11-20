@@ -46,5 +46,21 @@
     "Icon": "🏛️",
     "Active": true,
     "Order": 3
+  },
+  {
+    "Id": "54e8a6ea7bc840e8b72ae6445f748be4",
+    "Title": {
+      "ar": "",
+      "en": "",
+      "nl": ""
+    },
+    "Desc": {
+      "ar": "",
+      "en": "",
+      "nl": ""
+    },
+    "Icon": null,
+    "Active": true,
+    "Order": 4
   }
 ]

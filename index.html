@@ -231,17 +231,24 @@ const content = {
 
 // تحميل الخدمات من JSON خارجي
 function loadServices(lang) {
-  fetch("https://raw.githubusercontent.com/lawyerkasemalissa/Home/main/data/services.json")
+  fetch("https://cdn.jsdelivr.net/gh/lawyerkasemalissa/Home/data/services.json")
     .then(res => res.json())
     .then(data => {
       const container = document.querySelector(".specialties");
       container.innerHTML = "";
-      data.filter(item => item.active).sort((a,b)=>a.order-b.order).forEach(item=>{
-        const card = document.createElement("div");
-        card.className="card";
-        card.innerHTML = `<strong><p>${item.icon} ${item.title[lang]}</p></strong><p>${item.desc[lang]}</p>`;
-        container.appendChild(card);
-      });
+      data
+  .filter(item => item.Active)
+  .sort((a, b) => a.Order - b.Order)
+  .forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <strong><p>${item.Icon} ${item.Title[lang]}</p></strong>
+      <p>${item.Desc[lang]}</p>
+    `;
+    container.appendChild(card);
+  });
+
     })
     .catch(err=>{
       console.error("فشل تحميل الخدمات:", err);

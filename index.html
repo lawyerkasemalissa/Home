@@ -311,9 +311,6 @@ async function sendMessage() {
         date: new Date().toISOString()
     };
 
-   // const token = "YOUR_GITHUB_TOKEN";
-   // const apiUrl = "https://api.github.com/repos/lawyerkasemalissa/Home/contents/data/messages.json";
-
     try {
         const getRes = await fetch(apiUrl, {
             headers: { Authorization: `Bearer ${token}` }

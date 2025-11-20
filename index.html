@@ -231,7 +231,7 @@ const content = {
 
 // تحميل الخدمات من JSON خارجي
 function loadServices(lang) {
-  fetch("https://cdn.jsdelivr.net/gh/lawyerkasemalissa/Home/data/services.json")
+  fetch("https://raw.githubusercontent.com/lawyerkasemalissa/Home/main/data/services.json")
     .then(res => res.json())
     .then(data => {
       const container = document.querySelector(".specialties");

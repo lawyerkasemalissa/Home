@@ -36,7 +36,7 @@
 
     header {
       text-align: center;
-      padding: 60px 20px 30px;
+      padding: 50px 20px 30px;
       position: relative;
     }
 
@@ -176,6 +176,8 @@
 
     @media (max-width: 600px) {
       h1 { font-size: 1.8rem; }
+      .language-switch button { margin-left: 5px; padding: 5px 10px; }
+      footer a img { height: 40px; width: 40px; }
     }
   </style>
 </head>
@@ -214,87 +216,42 @@
   <footer>
     <p id="footer-text">© جميع الحقوق محفوظة - مكتب المحامي قاسم العيسى 2025</p>
     <div>
-      <a href="mailto:lawerkasemalissa@email.com" title="البريد الإلكتروني"><img height="60" width="60" src="icon/gmail.png"></a>
-      <a href="https://wa.me/963957589874" target="_blank" title="واتساب"><img height="60" width="60" src="icon/whatsapp.png"></a>
-      <a href="https://www.facebook.com/share/17nHeQtBif" target="_blank" title="فيس بوك"><img height="60" width="60" src="icon/facebook.png"></a>
+      <a href="mailto:lawerkasemalissa@email.com" title="البريد الإلكتروني"><img height="60" width="60" src="icon/gmail.png" alt="Gmail"></a>
+      <a href="https://wa.me/963957589874" target="_blank" title="واتساب"><img height="60" width="60" src="icon/whatsapp.png" alt="WhatsApp"></a>
+      <a href="https://www.facebook.com/share/17nHeQtBif" target="_blank" title="فيس بوك"><img height="60" width="60" src="icon/facebook.png" alt="Facebook"></a>
     </div>
   </footer>
 
 <script>
-// المحتوى متعدد اللغات
 const content = {
-  ar: {
-    dir: "rtl",
-    name: "المحامي قاسم العيسى",
-    tagline: "العدل أساس الملك",
-    aboutTitle: "نبذة تعريفية",
-    aboutText: "محامٍ متخصص بخبرة طويلة في تقديم الاستشارات القانونية باحترافية وشفافية عالية.",
-    specialtiesTitle: "الخدمات القانونية",
-    contactTitle: "تواصل معنا",
-    namePH: "الاسم",
-    emailPH: "البريد الإلكتروني",
-    messagePH: "رسالتك",
-    send: "إرسال",
-    footer: "© جميع الحقوق محفوظة - مكتب المحامي قاسم العيسى 2025"
-  },
-  en: {
-    dir: "ltr",
-    name: "Lawyer Kasem Al-Issa",
-    tagline: "Justice is the foundation of governance",
-    aboutTitle: "About",
-    aboutText: "A lawyer with extensive experience in providing legal consultation and services with professionalism and transparency.",
-    specialtiesTitle: "Legal Services",
-    contactTitle: "Contact Us",
-    namePH: "Name",
-    emailPH: "Email",
-    messagePH: "Your Message",
-    send: "Send",
-    footer: "© All rights reserved - Kasem Al-Issa Law Office 2025"
-  },
-  nl: {
-    dir: "ltr",
-    name: "Advocaat Kasem Al-Issa",
-    tagline: "Gerechtigheid is de basis van goed bestuur",
-    aboutTitle: "Over mij",
-    aboutText: "Een advocaat met ruime ervaring in het bieden van juridisch advies en diensten op een professionele en transparante manier.",
-    specialtiesTitle: "Juridische diensten",
-    contactTitle: "Neem Contact Op",
-    namePH: "Naam",
-    emailPH: "E-mail",
-    messagePH: "Uw bericht",
-    send: "Versturen",
-    footer: "© Alle rechten voorbehouden - Kasem Al-Issa Advocatenkantoor 2025"
-  }
+  ar: { dir:"rtl", name:"المحامي قاسم العيسى", tagline:"العدل أساس الملك", aboutTitle:"نبذة تعريفية", aboutText:"محامٍ متخصص بخبرة طويلة في تقديم الاستشارات القانونية باحترافية وشفافية عالية.", specialtiesTitle:"الخدمات القانونية", contactTitle:"تواصل معنا", namePH:"الاسم", emailPH:"البريد الإلكتروني", messagePH:"رسالتك", send:"إرسال", footer:"© جميع الحقوق محفوظة - مكتب المحامي قاسم العيسى 2025" },
+  en: { dir:"ltr", name:"Lawyer Kasem Al-Issa", tagline:"Justice is the foundation of governance", aboutTitle:"About", aboutText:"A lawyer with extensive experience in providing legal consultation and services with professionalism and transparency.", specialtiesTitle:"Legal Services", contactTitle:"Contact Us", namePH:"Name", emailPH:"Email", messagePH:"Your Message", send:"Send", footer:"© All rights reserved - Kasem Al-Issa Law Office 2025" },
+  nl: { dir:"ltr", name:"Advocaat Kasem Al-Issa", tagline:"Gerechtigheid is de basis van goed bestuur", aboutTitle:"Over mij", aboutText:"Een advocaat met ruime ervaring in het bieden van juridisch advies en diensten op een professionele en transparante manier.", specialtiesTitle:"Juridische diensten", contactTitle:"Neem Contact Op", namePH:"Naam", emailPH:"E-mail", messagePH:"Uw bericht", send:"Versturen", footer:"© Alle rechten voorbehouden - Kasem Al-Issa Advocatenkantoor 2025" }
 };
 
-// تحميل الخدمات من ملف JSON متعدد اللغات
+// تحميل الخدمات من JSON خارجي
 function loadServices(lang) {
   fetch("https://raw.githubusercontent.com/lawyerkasemalissa/Home/main/data/services.json")
     .then(res => res.json())
     .then(data => {
       const container = document.querySelector(".specialties");
       container.innerHTML = "";
-      data
-        .filter(item => item.active)
-        .sort((a, b) => a.order - b.order)
-        .forEach(item => {
-          const card = document.createElement("div");
-          card.className = "card";
-          card.innerHTML = `
-            <bold><p>${item.icon} ${item.title[lang]}</p></bold>
-            <p>${item.desc[lang]}</p>
-          `;
-          container.appendChild(card);
-        });
+      data.filter(item => item.active).sort((a,b)=>a.order-b.order).forEach(item=>{
+        const card = document.createElement("div");
+        card.className="card";
+        card.innerHTML = `<strong><p>${item.icon} ${item.title[lang]}</p></strong><p>${item.desc[lang]}</p>`;
+        container.appendChild(card);
+      });
     })
-    .catch(err => {
+    .catch(err=>{
       console.error("فشل تحميل الخدمات:", err);
-      document.querySelector(".specialties").innerHTML = "<p>تعذر تحميل الخدمات حاليًا.</p>";
-    });
+      document.querySelector(".specialties").innerHTML="<p>تعذر تحميل الخدمات حاليًا.</p>";
+    });
 }
 
-// تغيير اللغة وتحديث المحتوى
+// تغيير اللغة وحفظها
 function setLanguage(lang) {
+  localStorage.setItem("lang", lang);
   const c = content[lang];
   document.documentElement.dir = c.dir;
   document.documentElement.lang = lang;
@@ -312,25 +269,25 @@ function setLanguage(lang) {
   loadServices(lang);
 }
 
-// حفظ اللغة المختارة وتشغيلها عند التحميل
-window.addEventListener("DOMContentLoaded", () => {
+// تشغيل اللغة المحفوظة
+window.addEventListener("DOMContentLoaded", ()=>{
   const savedLang = localStorage.getItem("lang") || "ar";
   setLanguage(savedLang);
 });
 
 // تأثير الظهور عند التمرير
 const sections = document.querySelectorAll("section");
-window.addEventListener("scroll", () => {
-  sections.forEach(sec => {
+window.addEventListener("scroll", ()=>{
+  sections.forEach(sec=>{
     const rect = sec.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
+    if(rect.top < window.innerHeight - 100){
       sec.classList.add("visible");
     }
   });
 });
 
-// تنبيه عند إرسال الرسالة (تجريبي)
-document.getElementById("send").addEventListener("click", () => {
+// تنبيه عند الإرسال (تجريبي)
+document.getElementById("send").addEventListener("click", ()=>{
   alert("✅ تم إرسال الرسالة بنجاح! (هذا نموذج تجريبي)");
 });
 </script>

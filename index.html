@@ -269,7 +269,7 @@ const content = {
 
 // تحميل الخدمات من ملف JSON متعدد اللغات
 function loadServices(lang) {
-  fetch("data/services.json")
+  fetch("https://raw.githubusercontent.com/lawyerkasemalissa/Home/main/data/services.json")
     .then(res => res.json())
     .then(data => {
       const container = document.querySelector(".specialties");
@@ -290,7 +290,7 @@ function loadServices(lang) {
     .catch(err => {
       console.error("فشل تحميل الخدمات:", err);
       document.querySelector(".specialties").innerHTML = "<p>تعذر تحميل الخدمات حاليًا.</p>";
-    });
+    });
 }
 
 // تغيير اللغة وتحديث المحتوى

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المحامي قاسم العيسى</title>
+
+  <!-- تحسينات SEO -->
+  <meta name="description" content="مكتب المحامي قاسم العيسى يقدم خدمات قانونية واستشارات مهنية باحترافية وشفافية عالية بثلاث لغات.">
+  <meta name="keywords" content="محامي, قانون, استشارات قانونية, عقود, قاسم العيسى, Lawyer, Legal Consultant">
+
+  <!-- أيقونة الموقع -->
+  <link rel="icon" href="favicon.ico">
+
+  <!-- خطوط Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #0c0c0c;
+      --bg-gradient: linear-gradient(135deg, #1a1a1a, #000);
+      --gold: #d4af37;
+      --gold-light: #e6c55c;
+      --text-light: #f5f5f5;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-light);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      transition: all 0.4s ease;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px 30px;
+      position: relative;
+    }
+
+    header::before {
+      content: "⚖️";
+      font-size: 90px;
+      position: absolute;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.07;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    }
+
+    nav {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+    }
+
+    .language-switch button {
+      background: none;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      margin-left: 10px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .language-switch button:hover {
+      background: var(--gold);
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+    }
+
+    p {
+      line-height: 1.8;
+    }
+
+    .specialties {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 16px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      background: rgba(212, 175, 55, 0.1);
+      transform: translateY(-5px);
+    }
+
+    form {
+      display: grid;
+      gap: 15px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+    }
+
+    button.submit-btn {
+      background: var(--gold);
+      border: none;
+      padding: 10px;
+      color: #000;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    button.submit-btn:hover {
+      background: var(--gold-light);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    footer a {
+      color: var(--gold);
+      margin: 0 8px;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    footer a:hover {
+      color: var(--gold-light);
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      .language-switch button { margin-left: 5px; padding: 5px 10px; }
+      footer a img { height: 40px; width: 40px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="language-switch">
+      <button onclick="setLanguage('ar')">AR</button>
+      <button onclick="setLanguage('en')">EN</button>
+      <button onclick="setLanguage('nl')">NL</button>
+    </nav>
+    <h1 id="lawyer-name">المحامي قاسم العيسى</h1>
+    <p id="lawyer-tagline">العدل أساس الملك</p>
+  </header>
+
+  <section id="about">
+    <h2 id="about-title">نبذة تعريفية</h2>
+    <p id="about-text">محامٍ متخصص بخبرة طويلة في تقديم الاستشارات القانونية باحترافية وشفافية عالية.</p>
+  </section>
+
+  <section id="specialties">
+    <h2 id="specialties-title">الخدمات القانونية</h2>
+    <div class="specialties"></div>
+  </section>
+
+  <section id="contact">
+    <h2 id="contact-title">تواصل معنا</h2>
+    <form>
+      <input type="text" id="name" placeholder="الاسم">
+      <input type="email" id="email" placeholder="البريد الإلكتروني">
+      <textarea id="message" rows="4" placeholder="رسالتك"></textarea>
+      <button class="submit-btn" type="button" id="send">إرسال</button>
+    </form>
+  </section>
+
+  <footer>
+    <p id="footer-text">© جميع الحقوق محفوظة - مكتب المحامي قاسم العيسى 2025</p>
+    <div>
+      <a href="mailto:lawerkasemalissa@email.com" title="البريد الإلكتروني"><img height="60" width="60" src="icon/gmail.png" alt="Gmail"></a>
+      <a href="https://wa.me/963957589874" target="_blank" title="واتساب"><img height="60" width="60" src="icon/whatsapp.png" alt="WhatsApp"></a>
+      <a href="https://www.facebook.com/share/17nHeQtBif" target="_blank" title="فيس بوك"><img height="60" width="60" src="icon/facebook.png" alt="Facebook"></a>
+    </div>
+  </footer>
+
+<script>
+const content = {
+  ar: { dir:"rtl", name:"المحامي قاسم العيسى", tagline:"العدل أساس الملك", aboutTitle:"نبذة تعريفية", aboutText:"محامٍ متخصص بخبرة طويلة في تقديم الاستشارات القانونية باحترافية وشفافية عالية.", specialtiesTitle:"الخدمات القانونية", contactTitle:"تواصل معنا", namePH:"الاسم", emailPH:"البريد الإلكتروني", messagePH:"رسالتك", send:"إرسال", footer:"© جميع الحقوق محفوظة - مكتب المحامي قاسم العيسى 2025" },
+  en: { dir:"ltr", name:"Lawyer Kasem Al-Issa", tagline:"Justice is the foundation of governance", aboutTitle:"About", aboutText:"A lawyer with extensive experience in providing legal consultation and services with professionalism and transparency.", specialtiesTitle:"Legal Services", contactTitle:"Contact Us", namePH:"Name", emailPH:"Email", messagePH:"Your Message", send:"Send", footer:"© All rights reserved - Kasem Al-Issa Law Office 2025" },
+  nl: { dir:"ltr", name:"Advocaat Kasem Al-Issa", tagline:"Gerechtigheid is de basis van goed bestuur", aboutTitle:"Over mij", aboutText:"Een advocaat met ruime ervaring in het bieden van juridisch advies en diensten op een professionele en transparante manier.", specialtiesTitle:"Juridische diensten", contactTitle:"Neem Contact Op", namePH:"Naam", emailPH:"E-mail", messagePH:"Uw bericht", send:"Versturen", footer:"© Alle rechten voorbehouden - Kasem Al-Issa Advocatenkantoor 2025" }
+};
+
+// تحميل الخدمات من JSON خارجي
+function loadServices(lang) {
+  fetch("https://raw.githubusercontent.com/lawyerkasemalissa/Home/main/data/services.json")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.querySelector(".specialties");
+      container.innerHTML = "";
+      data
+  .filter(item => item.Active)
+  .sort((a, b) => a.Order - b.Order)
+  .forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <strong><p>${item.Icon} ${item.Title[lang]}</p></strong>
+      <p>${item.Desc[lang]}</p>
+    `;
+    container.appendChild(card);
+  });
+
+    })
+    .catch(err=>{
+      console.error("فشل تحميل الخدمات:", err);
+      document.querySelector(".specialties").innerHTML="<p>تعذر تحميل الخدمات حاليًا.</p>";
+    });
+}
+
+// تغيير اللغة وحفظها
+function setLanguage(lang) {
+  localStorage.setItem("lang", lang);
+  const c = content[lang];
+  document.documentElement.dir = c.dir;
+  document.documentElement.lang = lang;
+  document.getElementById("lawyer-name").innerText = c.name;
+  document.getElementById("lawyer-tagline").innerText = c.tagline;
+  document.getElementById("about-title").innerText = c.aboutTitle;
+  document.getElementById("about-text").innerText = c.aboutText;
+  document.getElementById("specialties-title").innerText = c.specialtiesTitle;
+  document.getElementById("contact-title").innerText = c.contactTitle;
+  document.getElementById("name").placeholder = c.namePH;
+  document.getElementById("email").placeholder = c.emailPH;
+  document.getElementById("message").placeholder = c.messagePH;
+  document.getElementById("send").innerText = c.send;
+  document.getElementById("footer-text").innerText = c.footer;
+  loadServices(lang);
+}
+
+// تشغيل اللغة المحفوظة
+window.addEventListener("DOMContentLoaded", ()=>{
+  const savedLang = localStorage.getItem("lang") || "ar";
+  setLanguage(savedLang);
+});
+
+// تأثير الظهور عند التمرير
+const sections = document.querySelectorAll("section");
+window.addEventListener("scroll", ()=>{
+  sections.forEach(sec=>{
+    const rect = sec.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 100){
+      sec.classList.add("visible");
+    }
+  });
+});
+/* إرسال الرسائل */
+document.getElementById("send").addEventListener("click", async () => {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  if (!name || !email || !message) {
+    alert("الرجاء ملء جميع الحقول!");
+    return;
+  }
+
+  const payload = {
+    name, email, message, date: new Date().toISOString()
+  };
+
+      alert("تم إرسال رسالتك بنجاح!");
+});
+
+</script>
+</body>
+</html>

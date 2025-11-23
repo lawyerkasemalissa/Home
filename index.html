@@ -1,315 +1,691 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>المحامي قاسم العيسى</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>المحامي قاسم العيسى — موقع رسمي</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="الموقع الرسمي للمحامي قاسم العيسى - استشارات قانونية، قضايا، صياغة عقود، متابعة شركات.">
+<style>
+:root{
+  --bg:#f6f8fb;
+  --card:#ffffff;
+  --accent:#0b3d91;
+  --accent-2:#0d6efd;
+  --muted:#6b7280;
+  --radius:14px;
+  --glass: rgba(255,255,255,0.7);
+}
 
-  <!-- تحسينات SEO -->
-  <meta name="description" content="مكتب المحامي قاسم العيسى يقدم خدمات قانونية واستشارات مهنية باحترافية وشفافية عالية بثلاث لغات.">
-  <meta name="keywords" content="محامي, قانون, استشارات قانونية, عقود, قاسم العيسى, Lawyer, Legal Consultant">
+[data-theme="dark"] {
+  --bg: #0d0d0d;          /* أسود داكن دافئ */
+  --card: #1a1a1a;        /* بطاقات داكنة مع تباين */
+  --accent: #ffd700;      /* ذهب فاتح */
+  --accent-2: #d4af37;    /* ذهب أغمق لتدرج */
+  --muted: #e0d8b0;       /* نصوص ذهبية فاتحة */
+  --glass: rgba(255,215,0,0.1); /* تأثير زجاجي ذهبي */
+}
+body[data-theme="dark"] {
+  background: var(--bg); /* استخدام لون واحد فقط */
+  color: #f5f1e0;
+}
 
-  <!-- أيقونة الموقع -->
-  <link rel="icon" href="favicon.ico">
 
-  <!-- خطوط Google -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg-dark: #0c0c0c;
-      --bg-gradient: linear-gradient(135deg, #1a1a1a, #000);
-      --gold: #d4af37;
-      --gold-light: #e6c55c;
-      --text-light: #f5f5f5;
-    }
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:linear-gradient(180deg,#f8fafc 0%, var(--bg) 100%);
+  color:#0b1220;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.55;
+  transition: all 0.3s ease;
+}
 
-    body {
-      margin: 0;
-      font-family: 'Cairo', sans-serif;
-      background: var(--bg-gradient);
-      color: var(--text-light);
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-      transition: all 0.4s ease;
-    }
+.container{max-width:1100px;margin:0 auto;padding:28px;}
+header{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:14px 0;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  height:56px;width:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px;
+  box-shadow:0 6px 18px rgba(11,61,145,0.14);
+}
+nav a{margin-left:14px;text-decoration:none;color:var(--muted);font-weight:600}
+nav a.cta{background:var(--accent);color:#fff;padding:10px 14px;border-radius:10px}
 
-    header {
-      text-align: center;
-      padding: 50px 20px 30px;
-      position: relative;
-    }
+#theme-toggle, #lang-toggle{
+  padding:6px 12px;border-radius:8px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-weight:600;
+  transition: all 0.3s ease;margin-left:8px;
+}
 
-    header::before {
-      content: "⚖️";
-      font-size: 90px;
-      position: absolute;
-      top: 15px;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0.07;
-    }
+.hero{display:grid;grid-template-columns:1fr 420px;gap:26px;align-items:center;margin:18px 0 36px;}
+.hero-card{
+  background:var(--card);border-radius:var(--radius);padding:30px;box-shadow:0 10px 30px rgba(12,20,50,0.06);
+  transition: all 0.3s ease;
+}
+.hero h1{margin:0;font-size:28px;color:var(--accent);font-weight:700}
+.hero p.lead{color:var(--muted);margin:12px 0 18px}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:11px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-outline{border:2px solid var(--accent);color:var(--accent);background:transparent}
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      color: var(--gold);
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-    }
+.contact-card{padding:20px;border-radius:12px;background:linear-gradient(180deg, rgba(13,110,253,0.06), rgba(11,61,145,0.02));transition: all 0.3s ease;}
+.contact-item{display:flex;gap:10px;align-items:center;margin:10px 0;color:var(--muted)}
+.contact-item svg{width:20px;height:20px;opacity:0.9}
 
-    nav {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-    }
+section{margin:28px 0}
+h2.section-title{margin:0 0 18px;font-size:20px;color:var(--accent)}
+.about{display:flex;gap:20px;align-items:flex-start}
+.about p{color:var(--muted);margin:0}
 
-    .language-switch button {
-      background: none;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      margin-left: 10px;
-      padding: 6px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.service{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 14px rgba(12,20,50,0.04);transition: all 0.3s ease;}
+.service h3{margin:0 0 8px;font-size:16px;color:var(--accent)}
+.service p{margin:0;color:var(--muted);font-size:14px}
 
-    .language-switch button:hover {
-      background: var(--gold);
-      color: #000;
-      transform: scale(1.05);
-    }
+.contact-grid{display:grid;grid-template-columns:1fr 380px;gap:20px}
+form{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 14px rgba(12,20,50,0.04);transition: all 0.3s ease;}
+label{display:block;font-weight:600;margin-bottom:6px}
+input[type="text"],input[type="email"],textarea{width:100%;padding:10px;border-radius:10px;border:1px solid #e6e9ef;font-size:14px;background:transparent;resize:vertical;}
+.form-row{margin-bottom:12px}
+.helper{font-size:13px;color:var(--muted)}
 
-    section {
-      padding: 60px 20px;
-      text-align: center;
-      max-width: 900px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 1s ease;
-    }
+footer{margin-top:36px;padding:18px 0;border-top:1px solid #e9eef6;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.socials a{margin-left:8px;text-decoration:none;color:var(--muted)}
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
 
-    h2 {
-      color: var(--gold);
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 20px;
-    }
-
-    p {
-      line-height: 1.8;
-    }
-
-    .specialties {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      border-radius: 16px;
-      padding: 20px;
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      background: rgba(212, 175, 55, 0.1);
-      transform: translateY(-5px);
-    }
-
-    form {
-      display: grid;
-      gap: 15px;
-      max-width: 500px;
-      margin: auto;
-    }
-
-    input, textarea {
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      background: rgba(255,255,255,0.05);
-      color: #fff;
-    }
-
-    button.submit-btn {
-      background: var(--gold);
-      border: none;
-      padding: 10px;
-      color: #000;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    button.submit-btn:hover {
-      background: var(--gold-light);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
-    footer a {
-      color: var(--gold);
-      margin: 0 8px;
-      text-decoration: none;
-      font-size: 1.2rem;
-    }
-
-    footer a:hover {
-      color: var(--gold-light);
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 1.8rem; }
-      .language-switch button { margin-left: 5px; padding: 5px 10px; }
-      footer a img { height: 40px; width: 40px; }
-    }
-  </style>
+.fade-up{opacity:0;transform:translateY(8px);animation:fadeInUp 0.6s ease forwards}
+@keyframes fadeInUp{to{opacity:1;transform:none}}
+</style>
 </head>
-
-<body>
-  <header>
-    <nav class="language-switch">
-      <button onclick="setLanguage('ar')">AR</button>
-      <button onclick="setLanguage('en')">EN</button>
-      <button onclick="setLanguage('nl')">NL</button>
-    </nav>
-    <h1 id="lawyer-name">المحامي قاسم العيسى</h1>
-    <p id="lawyer-tagline">العدل أساس الملك</p>
-  </header>
-
-  <section id="about">
-    <h2 id="about-title">نبذة تعريفية</h2>
-    <p id="about-text">محامٍ متخصص بخبرة طويلة في تقديم الاستشارات القانونية باحترافية وشفافية عالية.</p>
-  </section>
-
-  <section id="specialties">
-    <h2 id="specialties-title">الخدمات القانونية</h2>
-    <div class="specialties"></div>
-  </section>
-
-  <section id="contact">
-    <h2 id="contact-title">تواصل معنا</h2>
-    <form>
-      <input type="text" id="name" placeholder="الاسم">
-      <input type="email" id="email" placeholder="البريد الإلكتروني">
-      <textarea id="message" rows="4" placeholder="رسالتك"></textarea>
-      <button class="submit-btn" type="button" id="send">إرسال</button>
-    </form>
-  </section>
-
-  <footer>
-    <p id="footer-text">© جميع الحقوق محفوظة - مكتب المحامي قاسم العيسى 2025</p>
+<body data-theme="light">
+<div class="container">
+<header>
+  <div class="brand">
+    <div class="logo" aria-hidden="true">قع</div>
     <div>
-      <a href="mailto:lawerkasemalissa@email.com" title="البريد الإلكتروني"><img height="60" width="60" src="icon/gmail.png" alt="Gmail"></a>
-      <a href="https://wa.me/963957589874" target="_blank" title="واتساب"><img height="60" width="60" src="icon/whatsapp.png" alt="WhatsApp"></a>
-      <a href="https://www.facebook.com/share/17nHeQtBif" target="_blank" title="فيس بوك"><img height="60" width="60" src="icon/facebook.png" alt="Facebook"></a>
+      <div style="font-weight:700">قاسم العيسى</div>
+      <div style="font-size:13px;color:var(--muted)">محامٍ ومستشار قانوني</div>
     </div>
-  </footer>
+  </div>
+  <nav aria-label="روابط الموقع">
+    <a href="#about">نبذة</a>
+    <a href="#services">خدمات</a>
+    <a href="#contact" class="cta">تواصل معنا</a>
+  </nav>
+  <div style="display:flex;align-items:center">
+    <button id="theme-toggle">الوضع الداكن</button>
+    <button id="lang-toggle">العربية</button>
+  </div>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-card fade-up" style="--delay:0s">
+    <h1 id="hero-title"></h1>
+    <p class="lead" id="hero-lead"></p>
+    <div class="actions">
+      <a href="#contact" class="btn btn-primary" id="btn-consult"></a>
+      <a href="#services" class="btn btn-outline" id="btn-services"></a>
+    </div>
+    
+        <hr style="margin:18px 0;border:none;border-top:1px dashed #eef2fb">
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div style="min-width:160px" class="helper">
+            <strong>الخبرة:</strong><br>تمثيل عملاء في المحاكم والنيابات واستشارات مهنية متكاملة.
+          </div>
+          <div style="min-width:160px" class="helper">
+            <strong>قيمنا:</strong><br>النزاهة • السرية • الاحترافية
+          </div>
+        </div>
+  </div>
+
+ <aside class="contact-card fade-up" style="--delay:0.1s">
+  <h3 style="margin:0 0 8px;color:var(--accent)">تواصل سريع</h3>
+
+  <div class="contact-item">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M...Z" fill="currentColor"/></svg>
+    <div>
+      <div style="font-weight:700">واتساب</div>
+      <div style="font-size:14px;color:var(--muted)">
+        <a id="wa-link" href="#" style="color:var(--accent); text-decoration:none;" target="_blank">+963957589874</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-item">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M...Z" fill="currentColor"/></svg>
+    <div>
+      <div style="font-weight:700">البريد الإلكتروني</div>
+      <div style="font-size:14px;color:var(--muted)">
+        <a id="email-link" href="#" style="color:var(--accent); text-decoration:none;" target="_blank">lawerkasemalissa@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-item">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M...Z" fill="currentColor"/></svg>
+    <div>
+      <div style="font-weight:700">فيسبوك</div>
+      <div style="font-size:14px;color:var(--muted)">
+        <a id="fb-link" href="https://www.facebook.com/share/17nHeQtBif" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">Kasem Al-Issa</a>
+      </div>
+    </div>
+  </div>
+
+  <hr style="margin:12px 0;border:none;border-top:1px solid rgba(11,61,145,0.06)">
+
+  <div id="office-address-text" style="font-size:13px;color:var(--muted)">
+    عنوان المكتب (اختياري):<br>
+    مدينة — شارع — مبنى
+  </div>
+</aside>
+
+</div>
+
+<!-- About -->
+<section id="about" class="fade-up" style="--delay:0.15s">
+  <h2 class="section-title" id="about-title"></h2>
+  <div class="about">
+    <div style="flex:1">
+      <p id="about-text"></p>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="fade-up" style="--delay:0.2s">
+  <h2 class="section-title">خدماتنا القانونية</h2>
+  <div class="services-grid" id="services-grid"></div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="fade-up" style="--delay:0.25s">
+  <h2 class="section-title">تواصل معنا</h2>
+  <div class="contact-grid">
+    <form id="contactForm" onsubmit="handleFormSubmit(event)" aria-label="نموذج تواصل">
+      <div class="form-row">
+        <label for="name">الاسم الكامل</label>
+        <input id="name" name="name" type="text" required placeholder="اسمك الكامل" />
+      </div>
+      <div class="form-row">
+        <label for="email">البريد الإلكتروني</label>
+        <input id="email" name="email" type="email" required placeholder="your@mail.com" />
+      </div>
+      <div class="form-row">
+        <label for="phone">رقم الهاتف</label>
+        <input id="phone" name="phone" type="text" placeholder="+963XXXXXXXXX" />
+      </div>
+      <div class="form-row">
+        <label for="message">الرسالة / تفاصيل القضية</label>
+        <textarea id="message" name="message" rows="6" placeholder="اكتب تفاصيل موجزة هنا..." required></textarea>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button type="submit" class="btn btn-primary">إرسال عبر البريد</button>
+        <button type="button" class="btn btn-outline" onclick="sendViaWhatsApp()">إرسال عبر واتساب</button>
+        <div class="helper" style="margin-right:8px">عند الإرسال ستفتح نافذة البريد أو واتساب مع كتابة رسالة جاهزة.</div>
+      </div>
+    </form>
+
+        <!-- Map & Quick info -->
+        <aside style="display:flex;flex-direction:column;gap:14px">
+          <div style="background:var(--card);padding:12px;border-radius:12px;box-shadow:0 6px 14px rgba(12,20,50,0.04)">
+            <div style="font-weight:700">مكتب المحامي</div>
+            <div class="helper" style="margin-top:6px">المدينة — العنوان التفصيلي (استبدل بالنص الحقيقي)</div>
+            <div style="margin-top:8px">
+              <strong>الهاتف:</strong> <a id="phone-link" href="tel:+963957589874" style="text-decoration:none;color:var(--accent)">+963957589874</a><br>
+              <strong>البريد:</strong> <a id="mail-link2" href="mailto:lawerkasemalissa@gmail.com" style="text-decoration:none;color:var(--accent)">lawerkasemalissa@gmail.com</a>
+            </div>
+          </div>
+
+          <div style="border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(12,20,50,0.06)">
+  <iframe
+    title="خريطة موقع المكتب"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3828.1234567890!2d36.123456789!3d33.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x123456789abcdef!2sKasem+Al-Issa+Office!5e0!3m2!1sar!2s!4v1700000000000"
+    width="100%" height="240" style="border:0" allowfullscreen="" loading="lazy"></iframe>
+</div>
+        </aside>
+      </div>
+    </section>
+
+<!-- Footer -->
+<footer>
+  <div>© <span id="year"></span> المحامي قاسم العيسى — جميع الحقوق محفوظة.</div>
+  <div class="socials">
+    <a id="fb-footer" href="https://www.facebook.com/share/17nHeQtBif" target="_blank" rel="noopener"><img height="30" width="30" src="icon/facebook.png" alt="Facebook"></a>
+    <a id="wa-footer" href="https://wa.me/963957589874" target="_blank" rel="noopener"><img height="30" width="30" src="icon/whatsapp.png" alt="WhatsApp"></a>
+    <a id="email-footer" href="mailto:lawerkasemalissa@gmail.com" target="_blank" rel="noopener"><img height="30" width="30" src="icon/gmail.png" alt="Gmail"></a>
+  </div>
+</footer>
+</div>
 
 <script>
-const content = {
-  ar: { dir:"rtl", name:"المحامي قاسم العيسى", tagline:"العدل أساس الملك", aboutTitle:"نبذة تعريفية", aboutText:"محامٍ متخصص بخبرة طويلة في تقديم الاستشارات القانونية باحترافية وشفافية عالية.", specialtiesTitle:"الخدمات القانونية", contactTitle:"تواصل معنا", namePH:"الاسم", emailPH:"البريد الإلكتروني", messagePH:"رسالتك", send:"إرسال", footer:"© جميع الحقوق محفوظة - مكتب المحامي قاسم العيسى 2025" },
-  en: { dir:"ltr", name:"Lawyer Kasem Al-Issa", tagline:"Justice is the foundation of governance", aboutTitle:"About", aboutText:"A lawyer with extensive experience in providing legal consultation and services with professionalism and transparency.", specialtiesTitle:"Legal Services", contactTitle:"Contact Us", namePH:"Name", emailPH:"Email", messagePH:"Your Message", send:"Send", footer:"© All rights reserved - Kasem Al-Issa Law Office 2025" },
-  nl: { dir:"ltr", name:"Advocaat Kasem Al-Issa", tagline:"Gerechtigheid is de basis van goed bestuur", aboutTitle:"Over mij", aboutText:"Een advocaat met ruime ervaring in het bieden van juridisch advies en diensten op een professionele en transparante manier.", specialtiesTitle:"Juridische diensten", contactTitle:"Neem Contact Op", namePH:"Naam", emailPH:"E-mail", messagePH:"Uw bericht", send:"Versturen", footer:"© Alle rechten voorbehouden - Kasem Al-Issa Advocatenkantoor 2025" }
+/* CONFIG */
+const CONFIG = {
+  whatsappNumber: "+963957589874",           
+  whatsappPhoneForLink: "963957589874",     
+  email: "lawerkasemalissa@gmail.com",
+  facebookUrl: "https://www.facebook.com/share/17nHeQtBif",
+  officePhone: "+963957589874",
+  officeAddress: "المدينة — شارع — مبنى",
+  servicesUrl: "https://raw.githubusercontent.com/lawyerkasemalissa/Home/main/data/services.json"
 };
 
-// تحميل الخدمات من JSON خارجي
-function loadServices(lang) {
-  fetch("https://raw.githubusercontent.com/lawyerkasemalissa/Home/main/data/services.json")
+/* INIT LINKS */
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('wa-link').href = "https://wa.me/" + CONFIG.whatsappPhoneForLink;
+document.getElementById('fb-link').href = CONFIG.facebookUrl;
+document.getElementById('email-link').href = "mailto:" + CONFIG.email;
+document.getElementById('fb-footer').href = CONFIG.facebookUrl;
+document.getElementById('wa-footer').href = "https://wa.me/" + CONFIG.whatsappPhoneForLink;
+document.getElementById('email-footer').href = "mailto:" + CONFIG.email;
+
+/* DARK/LIGHT TOGGLE */
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', ()=>{
+  const html = document.body;
+  if(html.dataset.theme==="light"){ html.dataset.theme="dark"; themeToggle.textContent="الوضع الفاتح"; }
+  else { html.dataset.theme="light"; themeToggle.textContent="الوضع الداكن"; }
+});
+
+/* TRANSLATIONS */
+const translations = {
+  ar: {
+    brandName: "قاسم العيسى",
+    theme:"الوضع الداكن",
+    navAbout:"نبذة",
+    navServices:"خدمات",
+    navContact:"تواصل معنا",
+    heroTitle:"المحامي قاسم العيسى",
+    heroLead:"خبرة قانونية موثوقة — حلول عادلة وفعّالة لحماية حقوقك. استشارات في القضايا المدنية، الجنائية، التجارية، والأحوال الشخصية.",
+    btnConsult:"احجز استشارة",
+    btnServices:"اطّلع على الخدمات",
+    heroExp:"الخبرة: تمثيل عملاء في المحاكم والنيابات واستشارات مهنية متكاملة.",
+    heroValues:"قيمنا: النزاهة • السرية • الاحترافية",
+    aboutTitle:"نبذة عن المحامي قاسم العيسى",
+    aboutText:"المحامي قاسم العيسى متخصص في القضايا المدنية والجنائية والتجارية. يقدم استشارات قانونية ودفاع أمام المحاكم والنيابات، وصياغة العقود ومتابعة قضايا الشركات والتحكيم.",
+    servicesTitle:"خدماتنا القانونية",           // تمت الإضافة
+    contactTitle:"تواصل سريع",                  // تمت الإضافة
+    contactSectionTitle:"تواصل معنا",          // تمت الإضافة
+    contactWa:"واتساب",
+    contactEmail:"البريد الإلكتروني",
+    contactFb:"فيسبوك",
+    contactAddress:"عنوان المكتب (اختياري): المدينة — شارع — مبنى",
+    labelName:"الاسم الكامل",
+    labelEmail:"البريد الإلكتروني",
+    labelPhone:"رقم الهاتف",
+    labelMessage:"الرسالة / تفاصيل القضية",
+    btnMail:"إرسال عبر البريد",
+    btnWA:"إرسال عبر واتساب",
+    helperContact:"عند الإرسال ستفتح نافذة البريد أو واتساب مع كتابة رسالة جاهزة.",
+    placeholderName:"اسمك الكامل",
+    placeholderEmail:"your@mail.com",
+    placeholderPhone:"+963XXXXXXXXX",
+    placeholderMessage:"اكتب تفاصيل موجزة هنا...",
+    servicesError:"تعذر تحميل الخدمات حالياً.",
+    footerText:"© المحامي قاسم العيسى — جميع الحقوق محفوظة.",
+  contactFbPage: "صفحة فيسبوك",
+  officeTitle: "مكتب المحامي",
+  officeAddress: "المدينة — العنوان التفصيلي (استبدل بالنص الحقيقي)",
+  phoneLabel: "الهاتف",
+  emailLabel: "البريد",
+  mapTitle: "خريطة موقع المكتب"
+  },
+  en: {
+    brandName: "Kasem Al-Issa",
+    theme:"Dark Mode",
+    navAbout:"About",
+    navServices:"Services",
+    navContact:"Contact",
+    heroTitle:"Lawyer Kasem Al-Issa",
+    heroLead:"Trusted legal expertise — fair and effective solutions to protect your rights. Consultations in civil, criminal, commercial, and personal status cases.",
+    btnConsult:"Book Consultation",
+    btnServices:"View Services",
+    heroExp:"Experience: Representing clients in courts and providing professional legal advice.",
+    heroValues:"Values: Integrity • Confidentiality • Professionalism",
+    aboutTitle:"About Lawyer Kasem Al-Issa",
+    aboutText:"Lawyer Kasem Al-Issa specializes in civil, criminal, and commercial cases. He provides legal consultations, court representation, contract drafting, and company case management.",
+    servicesTitle:"Our Legal Services",          // تمت الإضافة
+    contactTitle:"Quick Contact",                // تمت الإضافة
+    contactSectionTitle:"Contact Us",           // تمت الإضافة
+    contactWa:"WhatsApp",
+    contactEmail:"Email",
+    contactFb:"Facebook",
+    contactAddress:"Office Address (optional): City — Street — Building",
+    labelName:"Full Name",
+    labelEmail:"Email",
+    labelPhone:"Phone Number",
+    labelMessage:"Message / Case Details",
+    btnMail:"Send via Email",
+    btnWA:"Send via WhatsApp",
+    helperContact:"Upon sending, an email or WhatsApp window will open with a prefilled message.",
+    placeholderName:"Your full name",
+    placeholderEmail:"your@mail.com",
+    placeholderPhone:"+123XXXXXXXXX",
+    placeholderMessage:"Write a brief message here...",
+    servicesError:"Services could not be loaded at this time.",
+    footerText:"© Lawyer Kasem Al-Issa — All rights reserved.",
+    contactFbPage: "Facebook Page",
+  officeTitle: "Lawyer's Office",
+  officeAddress: "City — Full Address (replace with real text)",
+  phoneLabel: "Phone",
+  emailLabel: "Email",
+  mapTitle: "Office Location Map"
+  },
+  nl: {
+    brandName: "Kasem Al-Issa",
+    theme:"Donkere Modus",
+    navAbout:"Over",
+    navServices:"Diensten",
+    navContact:"Contact",
+    heroTitle:"Advocaat Kasem Al-Issa",
+    heroLead:"Betrouwbare juridische expertise — eerlijke en effectieve oplossingen om uw rechten te beschermen. Advies in civiele, strafrechtelijke, commerciële en persoonlijke zaken.",
+    btnConsult:"Consultatie Boeken",
+    btnServices:"Bekijk Diensten",
+    heroExp:"Ervaring: Vertegenwoordiging van cliënten in rechtbanken en professioneel juridisch advies.",
+    heroValues:"Waarden: Integriteit • Vertrouwelijkheid • Professionaliteit",
+    aboutTitle:"Over Advocaat Kasem Al-Issa",
+    aboutText:"Advocaat Kasem Al-Issa is gespecialiseerd in civiele, strafrechtelijke en commerciële zaken. Hij biedt juridisch advies, rechtsbijstand, contractopstelling en bedrijfscasemanagement.",
+    servicesTitle:"Onze Juridische Diensten",   // تمت الإضافة
+    contactTitle:"Snelle Contact",             // تمت الإضافة
+    contactSectionTitle:"Neem Contact Op",    // تمت الإضافة
+    contactWa:"WhatsApp",
+    contactEmail:"E-mail",
+    contactFb:"Facebook",
+    contactAddress:"Kantooradres (optioneel): Stad — Straat — Gebouw",
+    labelName:"Volledige Naam",
+    labelEmail:"E-mail",
+    labelPhone:"Telefoonnummer",
+    labelMessage:"Bericht / Zaakdetails",
+    btnMail:"Verstuur via E-mail",
+    btnWA:"Verstuur via WhatsApp",
+    helperContact:"Bij verzending wordt een e-mail of WhatsApp-venster geopend met een vooraf ingevuld bericht.",
+    placeholderName:"Uw volledige naam",
+    placeholderEmail:"your@mail.com",
+    placeholderPhone:"+123XXXXXXXXX",
+    placeholderMessage:"Schrijf hier een korte boodschap...",
+    servicesError:"Diensten kunnen momenteel niet worden geladen.",
+    footerText:"© Advocaat Qasim Al-Issa — Alle rechten voorbehouden.",
+     contactFbPage: "Facebook Pagina",
+  officeTitle: "Advocaat Kantoor",
+  officeAddress: "Stad — Volledig Adres (vervang door echte tekst)",
+  phoneLabel: "Telefoon",
+  emailLabel: "E-mail",
+  mapTitle: "Kaart van het Kantoor"
+  }
+};
+
+let currentLang = "ar";
+const langBtn = document.getElementById('lang-toggle');
+
+function updateLanguage(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+
+  // زر الوضع الداكن
+  document.getElementById('theme-toggle').textContent = t.theme;
+  // روابط التنقل
+  document.querySelector('nav a[href="#about"]').textContent = t.navAbout;
+  document.querySelector('nav a[href="#services"]').textContent = t.navServices;
+  document.querySelector('nav a[href="#contact"]').textContent = t.navContact;
+
+  // Hero
+  document.getElementById('hero-title').textContent = t.heroTitle;
+  document.getElementById('hero-lead').textContent = t.heroLead;
+  document.getElementById('btn-consult').textContent = t.btnConsult;
+  document.getElementById('btn-services').textContent = t.btnServices;
+
+const officeAddressText = document.getElementById('office-address-text');
+if(officeAddressText) officeAddressText.innerHTML = t.officeAddress.replace(/\n/g, "<br>");
+
+  // الخبرة والقيم
+  const helpers = document.querySelectorAll('.hero-card .helper');
+  if (helpers.length >= 2) {
+    helpers[0].innerHTML = `<strong>${t.heroExp.split(':')[0]}:</strong><br>${t.heroExp.split(':')[1]}`;
+    helpers[1].innerHTML = `<strong>${t.heroValues.split(':')[0]}:</strong><br>${t.heroValues.split(':')[1]}`;
+  }
+
+  // قسم عن المحامي
+  document.getElementById('about-title').textContent = t.aboutTitle;
+  document.getElementById('about-text').textContent = t.aboutText;
+
+  // قسم خدماتنا القانونية
+  const servicesSection = document.querySelector('#services .section-title');
+  if (servicesSection) servicesSection.textContent = t.servicesTitle;
+
+  // نموذج التواصل
+  document.querySelector('#contactForm label[for="name"]').textContent = t.labelName;
+  document.querySelector('#contactForm input#name').placeholder = t.placeholderName;
+  document.querySelector('#contactForm label[for="email"]').textContent = t.labelEmail;
+  document.querySelector('#contactForm input#email').placeholder = t.placeholderEmail;
+  document.querySelector('#contactForm label[for="phone"]').textContent = t.labelPhone;
+  document.querySelector('#contactForm input#phone').placeholder = t.placeholderPhone;
+  document.querySelector('#contactForm label[for="message"]').textContent = t.labelMessage;
+  document.querySelector('#contactForm textarea#message').placeholder = t.placeholderMessage;
+  document.querySelector('#contactForm button.btn-primary').textContent = t.btnMail;
+  document.querySelector('#contactForm button.btn-outline').textContent = t.btnWA;
+  document.querySelector('#contactForm .helper').textContent = t.helperContact;
+
+
+  // Brand (الشعار واسم المحامي)
+  const brandInfo = document.querySelector('.brand > div:nth-child(2)');
+  if (brandInfo) {
+    brandInfo.children[0].textContent = lang === 'ar' ? "قاسم العيسى" : 
+                                        lang === 'en' ? "Kasem Al-Issa" :
+                                        "Kasem Al-Issa";
+    brandInfo.children[1].textContent = lang === 'ar' ? "محامٍ ومستشار قانوني" : 
+                                        lang === 'en' ? "Lawyer & Legal Advisor" :
+                                        "Advocaat & Juridisch Adviseur";
+  }
+  
+
+  // Contact Card
+  const contactCard = document.querySelector('.contact-card');
+  if (contactCard) {
+    const h3 = contactCard.querySelector('h3');
+    if (h3) h3.textContent = t.contactTitle;
+
+    const items = contactCard.querySelectorAll('.contact-item');
+    if (items.length >= 3) {
+      items[0].querySelector('div > div:first-child').textContent = t.contactWa;      // واتساب
+      items[1].querySelector('div > div:first-child').textContent = t.contactEmail;   // البريد الإلكتروني
+      items[2].querySelector('div > div:first-child').textContent = t.contactFbPage;  // فيسبوك
+    }
+  }
+
+  // Office & Map
+  const officeCard = document.querySelector('#contact aside > div:first-child');
+  if (officeCard) {
+    officeCard.querySelector('div:first-child').textContent = t.officeTitle;
+    officeCard.querySelector('.helper').textContent = t.officeAddress;
+    const strongs = officeCard.querySelectorAll('div:nth-child(3) strong');
+    if (strongs.length >= 2) {
+      strongs[0].textContent = t.phoneLabel + ':';
+      strongs[1].textContent = t.emailLabel + ':';
+    }
+  }
+  const mapIframe = document.querySelector('#contact aside iframe');
+  if (mapIframe) mapIframe.title = t.mapTitle;
+
+// تحديث عنوان قسم نموذج التواصل
+document.querySelectorAll('#contact .section-title').forEach(el => {
+  el.textContent = t.contactSectionTitle;
+});
+
+  // أزرار تغيير اللغة
+  langBtn.textContent = lang === "ar" ? "العربية" : lang === "en" ? "English" : "Nederlands";
+
+  // تحديث السنة في الفوتر
+  const footer = document.querySelector('footer div:first-child');
+  if (footer) footer.innerHTML = `© <span id="year">${new Date().getFullYear()}</span> ${t.footerText}`;
+}
+
+
+langBtn.addEventListener('click', () => {
+  if (currentLang === "ar") updateLanguage("en");
+  else if (currentLang === "en") updateLanguage("nl");
+  else updateLanguage("ar");
+  
+  loadServices();
+});
+
+document.addEventListener('DOMContentLoaded', () => updateLanguage(currentLang));
+
+/* FETCH SERVICES */
+fetch(CONFIG.servicesUrl)
+  .then(res => res.json())
+  .then(data => {
+    const grid = document.getElementById('services-grid');
+    grid.innerHTML = ''; // تنظيف الشبكة قبل الإضافة
+    data.forEach(s => {
+      if(s.Active){ // فقط الخدمات النشطة
+        const div = document.createElement('div');
+        div.className = 'service fade-up';
+        div.innerHTML = `
+          <h3>${s.Title[currentLang]}</h3>
+          <p>${s.Desc[currentLang]}</p>
+        `;
+        grid.appendChild(div);
+      }
+    });
+  })
+  .catch(err => {
+    console.error(err);
+    document.getElementById('services-grid').innerHTML = '<p>تعذر تحميل الخدمات حالياً.</p>';
+  });
+function loadServices() {
+  fetch(CONFIG.servicesUrl)
     .then(res => res.json())
     .then(data => {
-      const container = document.querySelector(".specialties");
-      container.innerHTML = "";
-      data
-  .filter(item => item.Active)
-  .sort((a, b) => a.Order - b.Order)
-  .forEach(item => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <strong><p>${item.Icon} ${item.Title[lang]}</p></strong>
-      <p>${item.Desc[lang]}</p>
-    `;
-    container.appendChild(card);
-  });
-
+      const grid = document.getElementById('services-grid');
+      grid.innerHTML = ''; // تنظيف الشبكة قبل الإضافة
+      data.forEach(s => {
+        if (s.Active) { // فقط الخدمات النشطة
+          const div = document.createElement('div');
+          div.className = 'service fade-up';
+          div.innerHTML = `
+            <h3>${s.Icon ? s.Icon + ' ' : ''}${s.Title[currentLang]}</h3>
+            <p>${s.Desc[currentLang]}</p>
+          `;
+          grid.appendChild(div);
+        }
+      });
     })
-    .catch(err=>{
-      console.error("فشل تحميل الخدمات:", err);
-      document.querySelector(".specialties").innerHTML="<p>تعذر تحميل الخدمات حاليًا.</p>";
+    .catch(err => {
+      console.error(err);
+      document.getElementById('services-grid').innerHTML = '<p>تعذر تحميل الخدمات حالياً.</p>';
     });
 }
 
-// تغيير اللغة وحفظها
-function setLanguage(lang) {
-  localStorage.setItem("lang", lang);
-  const c = content[lang];
-  document.documentElement.dir = c.dir;
-  document.documentElement.lang = lang;
-  document.getElementById("lawyer-name").innerText = c.name;
-  document.getElementById("lawyer-tagline").innerText = c.tagline;
-  document.getElementById("about-title").innerText = c.aboutTitle;
-  document.getElementById("about-text").innerText = c.aboutText;
-  document.getElementById("specialties-title").innerText = c.specialtiesTitle;
-  document.getElementById("contact-title").innerText = c.contactTitle;
-  document.getElementById("name").placeholder = c.namePH;
-  document.getElementById("email").placeholder = c.emailPH;
-  document.getElementById("message").placeholder = c.messagePH;
-  document.getElementById("send").innerText = c.send;
-  document.getElementById("footer-text").innerText = c.footer;
-  loadServices(lang);
-}
+// تحميل الخدمات عند بدء الصفحة
+document.addEventListener('DOMContentLoaded', () => loadServices());
 
-// تشغيل اللغة المحفوظة
-window.addEventListener("DOMContentLoaded", ()=>{
-  const savedLang = localStorage.getItem("lang") || "ar";
-  setLanguage(savedLang);
+
+/* CONTACT FORM */
+function escapeMailText(text){return encodeURIComponent(text).replace(/'/g,"%27");}
+function handleFormSubmit(e){
+  e.preventDefault();
+  const name=document.getElementById('name').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const message=document.getElementById('message').value.trim();
+  const subject=`استعلام من ${name} عبر موقع المحامي قاسم العيسى`;
+  const body=`الاسم: ${name}%0Aالبريد: ${email}%0Aالهاتف: ${phone}%0A%0Aالتفاصيل:%0A${escapeMailText(message)}`;
+  window.location.href=`mailto:${CONFIG.email}?subject=${escapeMailText(subject)}&body=${body}`;
+}
+function sendViaWhatsApp(){
+  const name=document.getElementById('name').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const message=document.getElementById('message').value.trim();
+  const text=`مرحباً،%0Aالاسم: ${escapeMailText(name)}%0Aالبريد: ${escapeMailText(email)}%0Aالهاتف: ${escapeMailText(phone)}%0A%0Aالوصف:%0A${escapeMailText(message)}`;
+  const waUrl=`https://wa.me/${CONFIG.whatsappPhoneForLink}?text=${text}`;
+  window.open(waUrl,'_blank');
+}
+// عند تحميل الصفحة، استرجع الثيم من localStorage
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  if(savedTheme) {
+    document.body.dataset.theme = savedTheme;
+    themeToggle.textContent = savedTheme === "dark" ? translations[currentLang].theme + " (فاتح)" : translations[currentLang].theme;
+  }
 });
 
-// تأثير الظهور عند التمرير
-const sections = document.querySelectorAll("section");
-window.addEventListener("scroll", ()=>{
-  sections.forEach(sec=>{
-    const rect = sec.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 100){
-      sec.classList.add("visible");
-    }
+// عند تبديل الثيم
+themeToggle.addEventListener('click', () => {
+  const html = document.body;
+  if(html.dataset.theme === "light"){
+    html.dataset.theme = "dark";
+    themeToggle.textContent = currentLang === 'ar' ? "الوضع الفاتح" : currentLang === 'en' ? "Light Mode" : "Licht Modus";
+  } else {
+    html.dataset.theme = "light";
+    themeToggle.textContent = currentLang === 'ar' ? "الوضع الداكن" : currentLang === 'en' ? "Dark Mode" : "Donkere Modus";
+  }
+  localStorage.setItem('theme', html.dataset.theme); // حفظ الاختيار
+});
+// عند تحميل الصفحة، استرجع الثيم من localStorage
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  if(savedTheme) {
+    document.body.dataset.theme = savedTheme;
+    themeToggle.textContent = savedTheme === "dark" ? translations[currentLang].theme + " (فاتح)" : translations[currentLang].theme;
+  }
+});
+
+// عند تبديل الثيم
+themeToggle.addEventListener('click', () => {
+  const html = document.body;
+  if(html.dataset.theme === "light"){
+    html.dataset.theme = "dark";
+    themeToggle.textContent = currentLang === 'ar' ? "الوضع الفاتح" : currentLang === 'en' ? "Light Mode" : "Licht Modus";
+  } else {
+    html.dataset.theme = "light";
+    themeToggle.textContent = currentLang === 'ar' ? "الوضع الداكن" : currentLang === 'en' ? "Dark Mode" : "Donkere Modus";
+  }
+  localStorage.setItem('theme', html.dataset.theme); // حفظ الاختيار
+});
+
+// عند تحميل الصفحة، استرجع اللغة من localStorage
+document.addEventListener('DOMContentLoaded', () => {
+  const savedLang = localStorage.getItem('lang');
+  if(savedLang) {
+    updateLanguage(savedLang);
+  } else {
+    updateLanguage(currentLang); // افتراضي
+  }
+});
+
+// عند تبديل اللغة
+langBtn.addEventListener('click', () => {
+  let newLang;
+  if(currentLang === "ar") newLang = "en";
+  else if(currentLang === "en") newLang = "nl";
+  else newLang = "ar";
+  
+  updateLanguage(newLang);
+  localStorage.setItem('lang', newLang); // حفظ الاختيار
+});
+
+
+/* Fade up animation */
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.fade-up').forEach((el,idx)=>{
+    const delay=(idx*80)+60;
+    el.style.animationDelay=(delay/1000)+'s';
   });
 });
-/* إرسال الرسائل */
-document.getElementById("send").addEventListener("click", async () => {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
-
-  if (!name || !email || !message) {
-    alert("الرجاء ملء جميع الحقول!");
-    return;
-  }
-
-  const payload = {
-    name, email, message, date: new Date().toISOString()
-  };
-
-      alert("تم إرسال رسالتك بنجاح!");
-});
-
 </script>
 </body>
 </html>

@@ -46,10 +46,54 @@ body{
 }
 
 .container{max-width:1100px;margin:0 auto;padding:28px;}
-header{
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-  padding:14px 0;
+header {
+  display: flex;
+  flex-wrap: wrap; /* يسمح للعنصر بالانحناء على الشاشات الصغيرة */
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
 }
+
+/* الروابط */
+header nav {
+  display: flex;
+  flex-wrap: wrap; /* يسمح للروابط بالانحناء */
+  gap: 12px;
+}
+
+/* زر الوضع واللغة */
+header > div:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* على الشاشات الصغيرة */
+@media (max-width:768px){
+  header {
+    flex-direction: column; /* يجعل الهيدر عمودياً على الهواتف */
+    align-items: flex-start;
+  }
+
+  header nav {
+    width: 100%;
+    justify-content: flex-start; /* تجعل الروابط تبدأ من اليسار */
+  }
+
+  header nav a {
+    flex: 1 1 auto; /* يسمح للروابط بالانحناء والامتداد إذا احتاجت */
+    text-align: left; 
+    margin: 4px 0; 
+  }
+
+  header > div:last-child {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 8px;
+  }
+}
+
 .brand{display:flex;align-items:center;gap:12px}
 .logo{
   height:56px;width:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
